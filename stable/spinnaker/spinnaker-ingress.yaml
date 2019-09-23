@@ -1,0 +1,24 @@
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: spinnaker-ingress
+  namespace: spinnaker
+  annotations:
+    kubernetes.io/ingress.global-static-ip-name: "jenkins-x"
+spec:
+  rules:
+  - host: spinnaker-api.dev.ad.lakesidehealthsystem.org
+    http:
+      paths:
+      - backend:
+          serviceName: spin-gate
+          servicePort: 8084
+        path: /
+
+  - host: spinnaker.dev.ad.lakesidehealthsystem.org
+    http:
+      paths:
+      - backend:
+          serviceName: spin-deck
+          servicePort: 9000
+        path: /
