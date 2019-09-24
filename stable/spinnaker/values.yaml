@@ -114,13 +114,13 @@ dockerRegistries:
 kubeConfig:
   # Use this when you want to register arbitrary clusters with Spinnaker
   # Upload your ~/kube/.config to a secret
-  enabled: false
-  secretName: my-kubeconfig
+  enabled: true
+  secretName: tools-cluster-kubeconfig
   secretKey: config
   # List of contexts from the kubeconfig to make available to Spinnaker
   contexts:
-  - default
-  deploymentContext: default
+  - gke_jenkins-x-251914_us-central1-a_tools-cluster
+  deploymentContext: gke_jenkins-x-251914_us-central1-a_tools-cluster
   omittedNameSpaces:
   - kube-system
   - kube-public
